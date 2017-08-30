@@ -5,6 +5,7 @@ Created on Tue Aug 22 16:48:20 2017
 @author: bowen
 
 Problem:
+    寻找最长无重复子串
 Longest Substring Without Repeating Characters
 
 Given a string, find the length of the longest substring without 
@@ -20,6 +21,8 @@ Given "pwwkew", the answer is "wke", with the length of 3.
 Note that the answer must be a substring, "pwke" is a subsequence
 and not a substring.
 
+Keywords: Hashmap
+
 """
 
 class Solution(object):
@@ -29,6 +32,7 @@ class Solution(object):
         :rtype: int
         
         idea:Sliding Window
+        一格一格地移动开始位置
         """
         substrArray = []
         slen = len(s)
@@ -46,8 +50,29 @@ class Solution(object):
 
         return maxlen
         
+    def method2(self,s):
+        """
+        :type s: str
+        :rtype: int
+        
+        idea:Hash Map
+        直接移动至所在索引的下一个位置
+        """
+        substrDict = {}
+        slen = len(s)
+        maxlen = 0
+        start = 0
+        for j in range(slen):
+            if s[j] in substrDict:
+                start = max(substrDict[s[j]],start)
+            maxlen = max(maxlen,j-start+1)
+            substrDict[s[j]] = j+1
+        return maxlen
+        
+        
+        
 s1 = Solution()
-print(s1.lengthOfLongestSubstring("jbpnbwwd"))
+print(s1.method2("jbpnbwwd"))
 
 
 
