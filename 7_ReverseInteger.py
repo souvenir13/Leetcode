@@ -29,5 +29,5 @@ class Solution(object):
         ans = int(xs[::-1])
         return sign * ans * (ans<pow(2,31))
     
-ans = Solution().reverse(-1534236469)
+ans = Solution().reverse(-153469)
 print(ans)
