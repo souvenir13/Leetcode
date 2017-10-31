@@ -40,14 +40,14 @@ def  findKmax(lists,k):
     求第k大的数(滴滴面试)
     """
     count = len(lists)
-    for i in range(0, k):
-        for j in range(0, count-i-1):
+    for i in range(k):
+        for j in range(count-i-1):
             if lists[j]>lists[j+1]:  
                 temp = lists[j]  
                 lists[j] = lists[j+1]  
                 lists[j+1] = temp 
-    print(lists)
-    return lists[-k]
+        print(lists[-i-1])
+
 
 
 def maxSubArray(self, nums):
@@ -65,7 +65,7 @@ def maxSubArray(self, nums):
     
 if __name__ == "__main__":
 #    print(checkArray(4,[5,7,3,9]))
-    print(findKmax([45,67,33,21],2))
+    findKmax([1,2,5,6,3,4,5,4],2)
     
     
     
